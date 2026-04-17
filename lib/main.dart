@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MainApp());
+import 'core/di/injection_container.dart';
+import 'features/task/presentation/pages/task_list_page.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await initDependencies(); // Setup semua dependency
+  runApp(const DevTaskApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class DevTaskApp extends StatelessWidget {
+  const DevTaskApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp(
+      title: 'DevTask',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.indigo),
+        useMaterial3: true,
       ),
+      home: const TaskListPage(),
     );
   }
 }
