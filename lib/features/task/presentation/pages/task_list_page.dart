@@ -53,14 +53,23 @@ class TaskListPage extends StatelessWidget {
             return const SizedBox.shrink();
           },
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (_) => const AddTaskPage()),
+        floatingActionButton: Builder(
+          builder: (context) {
+            return FloatingActionButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => BlocProvider.value(
+                      value: context.read<TaskBloc>(),
+                      child: const AddTaskPage(),
+                    ),
+                  ),
+                );
+              },
+              child: const Icon(Icons.add),
             );
           },
-          child: const Icon(Icons.add),
         ),
       ),
     );
