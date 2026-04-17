@@ -25,6 +25,15 @@ dependencies:
   uuid: ^4.4.0
   intl: ^0.19.0
 
+  # HTTP Client
+  dio: ^5.7.0
+
+  # Secure Storage (simpan token terenkripsi di device)
+  flutter_secure_storage: ^9.2.2
+
+  # Supabase (hanya untuk Auth — REST API tetap pakai Dio manual)
+  supabase_flutter: ^2.5.6
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
